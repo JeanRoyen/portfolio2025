@@ -1,0 +1,10 @@
+*
+!.gitignore
+!wp-content/
+wp-content/*
+!wp-content/themes
+wp-content/themes/*
+!wp-content/themes/portfolio2025
+!wp-content/themes/portfolio2025/*
+!wp-content/themes/portfolio2025/*/*
+!wp-content/themes/portfolio2025/*/*
