@@ -1,27 +1,27 @@
 <?php /* Template Name: Template "Contact" */ ?>
 <?php get_header(); ?>
     <h2>Me contacter</h2>
-<?php
-// On ouvre "la boucle" (The Loop), la structure de contrôle
-// de contenu propre à Wordpress:
-if(have_posts()): while(have_posts()): the_post(); ?>
+    <?php 
+    // On ouvre "la boucle" (The Loop), la structure de contrôle
+    // de contenu propre à Wordpress:
+    if(have_posts()): while(have_posts()): the_post(); ?>
 
-    <section class="contact">
-        <div class="contact__content">
-            <?php the_content(); ?>
-        </div>
-        <div class="contact__form">
-            <?php
+        <section class="contact">
+            <div class="contact__content">
+                <?php the_content(); ?>
+            </div>
+            <div class="contact__form">
+                <?php
 
-            $errors = $_SESSION['dw_contact_form_errors'] ?? [];
-            unset($_SESSION['dw_contact_form_errors']);
+                $errors = $_SESSION['dw_contact_form_errors'] ?? [];
+                unset($_SESSION['dw_contact_form_errors']);
 
-            $success = $_SESSION['dw_contact_form_success'] ?? false;
-            unset($_SESSION['dw_contact_form_success']);
+                $success = $_SESSION['dw_contact_form_success'] ?? false;
+                unset($_SESSION['dw_contact_form_success']);
 
-            if($success): ?>
+                if($success): ?>
                 <p class="contact__success"><?= $success; ?></p>
-            <?php else: ?>
+                <?php else: ?>
                 <form action="<?= esc_url(admin_url('admin-post.php')); ?>" method="POST" class="form">
                     <fieldset class="form__fields">
                         <div class="field">
@@ -68,13 +68,13 @@ if(have_posts()): while(have_posts()): the_post(); ?>
                         <button type="submit" class="btn">Envoyer</button>
                     </div>
                 </form>
-            <?php endif; ?>
-        </div>
-    </section>
+                <?php endif; ?>
+            </div>
+        </section>
 
-<?php
+    <?php 
     // On ferme "la boucle" (The Loop):
-endwhile; else: ?>
-    <p>Pas de contenu à afficher.</p>
-<?php endif; ?>
+    endwhile; else: ?>
+        <p>Pas de contenu à afficher.</p>
+    <?php endif; ?>
 <?php get_footer(); ?>
