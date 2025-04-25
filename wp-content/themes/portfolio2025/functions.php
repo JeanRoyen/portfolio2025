@@ -43,13 +43,13 @@ function enqueue_assets_from_vite_manifest(): void
 
         // Vérifier et ajouter le fichier JavaScript
         if (isset($manifest['wp-content/themes/portfolio2025/resources/js/main.js'])) {
-            wp_enqueue_script('dw',
+            wp_enqueue_script('portfolio2025',
                 get_theme_file_uri('public/' . $manifest['wp-content/themes/portfolio2025/resources/js/main.js']['file']), [], null, true);
         }
 
         // Vérifier et ajouter le fichier CSS
         if (isset($manifest['wp-content/themes/portfolio2025/resources/css/styles.scss'])) {
-            wp_enqueue_style('dw',
+            wp_enqueue_style('portfolio2025',
                 get_theme_file_uri('public/' . $manifest['wp-content/themes/portfolio2025/resources/css/styles.scss']['file']));
         }
     }
@@ -92,43 +92,26 @@ register_post_type('project', [
     'rewrite' => [
         'slug' => 'projects',
     ],
-    'supports' => ['title','editor','excerpt','thumbnail'],
+    'supports' => ['title'],
 ]);
 
-// Ajouter des "catégories" (taxonomies) sur ces post_types :
-
-register_taxonomy('course', ['recipe'], [
+register_taxonomy('project_type', 'project', [
     'labels' => [
-        'name' => 'Services',
-        'singular_name' => 'Service'
+        'name' => 'Types de projets',
+        'singular_name' => 'Type de projet',
     ],
-    'description' => 'À quel moment du repas ce plat intervient-il ?',
-    'public' => true,
     'hierarchical' => true,
-    'show_tagcloud' => false,
+    'public' => true,
+    'show_ui' => true,
+    'rewrite' => ['slug' => 'type'],
 ]);
 
-register_taxonomy('diet', ['recipe'], [
-    'labels' => [
-        'name' => 'Régimes alimentaires',
-        'singular_name' => 'Régime'
-    ],
-    'description' => 'À quel type de régime appartient cette recette ?',
-    'public' => true,
-    'hierarchical' => true,
-    'show_tagcloud' => false,
-]);
-
-// Paramétrer des tailles d'images pour le générateur de thumbnails de Wordpress :
-
-// Sans recadrage :
-add_image_size('trip-side', 420, 420);
-// Avec recadrage :
-add_image_size('trip-header', 1920, 400, true);
 
 // Enregistrer les menus de navigation en fonction de l'endroit où ils sont exploités :
 
 register_nav_menu('header', 'Le menu de navigation principal en haut de la page.');
+register_nav_menu('main', 'Menu principal dans le main');
+register_nav_menu('main_sub', 'Menu secondaire dans le main');
 register_nav_menu('footer', 'Le menu de navigation de fin de page.');
 
 // Créer une nouvelle fonction qui permet de retourner un menu de navigation formaté en un
@@ -199,13 +182,58 @@ function dw_handle_contact_form_submit()
         ->handle($_POST);
 }
 
+function responsive_image($image, $settings): bool|string
+{
+    if (empty($image)) {
+        return '';
+    }
 
+    $image_id = '';
 
+    if (is_numeric($image)) {
+        // si c'est un nombre, on considère que cela s'agit d'un ID
+        $image_id = $image;
+    } elseif (is_array($image) && isset($image['ID'])) {
+        // Si c'est un tableau associatif contenant la clé ID, on récupère cet ID
+        $image_id = $image['ID'];
+    } else {
+        // Générer un tag img par défaut
+    }
 
+// Récupération des informations de l'image depuis la base de données.
+    $alt = get_post_meta($image_id, '_wp_attachment_image_alt', true); // Attribut alt
+    $image_post = get_post($image_id); // Object WP_Post de l'image
+    $title = $image_post->post_title ?? '';
+    $name = $image_post->post_name ?? '';
 
+// Récupération des URLS et attributs pour l'image en taille "full"
+// Wordpress génère automatiquement un srcset basé sur les tailles existantes
+    $src = wp_get_attachment_image_url($image_id, 'full');
+    $srcset = wp_get_attachment_image_srcset($image_id, 'full');
+    $sizes = wp_get_attachment_image_sizes($image_id, 'full');
 
+// Gestion de l'attribut de chargement "lazy" ou "eager" selon les paramètres.
+    $lazy = $settings['lazy'] ?? 'eager';
 
+// Gestion des classes (si des classes sont fournies dans $settings).
+    $classes = '';
+    if (!empty($settings['classes'])) {
+        $classes = is_array($settings['classes']) ? implode(' ', $settings['classes']) : $settings['classes'];
+    }
 
-
-
-
+    ob_start();
+    ?>
+    <picture>
+        <!-- Ici, vous pouvez ajouter manuellement des balises <source> pour d'autres formats (WebP, AVIF, etc.)
+             si ces formats sont disponibles via un plugin ou un traitement personnalisé. -->
+        <img
+            src="<?= esc_url($src) ?>"
+            alt="<?= esc_attr($alt) ?>"
+            loading="<?= esc_attr($lazy) ?>"
+            srcset="<?= esc_attr($srcset) ?>"
+            sizes="<?= esc_attr($sizes) ?>"
+            class="<?= esc_attr($classes) ?>">
+    </picture>
+    <?php
+    return ob_get_clean();
+}

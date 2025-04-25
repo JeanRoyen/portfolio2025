@@ -6,13 +6,10 @@
     <title><?= wp_title('·', false, 'right') . get_bloginfo('name') ?></title>
     <link rel="stylesheet" type="text/css" href="<?= dw_asset('css'); ?>">
     <script src="<?= dw_asset('js') ?>" defer></script>
-    <?php wp_head(); ?>
 </head>
 <body>
     <header>
-        <h1><?= get_bloginfo('name') ?></h1>
-        <p><?= get_bloginfo('description') ?></p>
-        
+        <h1 class="sro"><?= get_bloginfo('name') ?></h1>
         <nav class="nav">
             <h2 class="sro">Navigation principale</h2>
             <ul class="nav__container">
