@@ -21,7 +21,7 @@
 </div>
 <section class="projects">
     <h2>Projets récents</h2>
-    <ul class="projects__list">
+    <div class="projects__list">
         <?php
         $projects = new WP_Query([
             'post_type' => 'project',
@@ -33,7 +33,7 @@
             while ($projects->have_posts()): $projects->the_post();
                 $image = get_field('image', get_the_ID());
                 ?>
-                <li class="project">
+                <div class="projet__item">
                     <a href="<?= get_permalink(); ?>" class="project__link">
                         <?php if (!empty($image)): ?>
                             <div class="project__thumb">
@@ -42,13 +42,13 @@
                         <?php endif; ?>
                         <h3 class="project__title"><?= get_the_title(); ?></h3>
                     </a>
-                </li>
+                </div>
             <?php endwhile;
             wp_reset_postdata();
         else: ?>
             <li>Aucun projet à afficher.</li>
         <?php endif; ?>
-    </ul>
+    </div>
 </section>
 <div class="nav__sub__container">
     <?php
