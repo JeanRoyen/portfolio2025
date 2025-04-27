@@ -240,7 +240,7 @@ function responsive_image($image, $settings): bool|string
 
 function load_svg(string $filename): string
 {
-    $path = get_template_directory() . '/public/icons/' . $filename . '.svg';
+    $path = get_template_directory() . '/resources/icons/' . $filename . '.svg';
 
     if (file_exists($path)) {
         return file_get_contents($path);
