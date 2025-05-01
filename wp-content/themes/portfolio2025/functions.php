@@ -26,6 +26,8 @@ add_action('wp_enqueue_scripts', function() {
     wp_dequeue_style('global-styles');
 }, 20);
 
+add_filter('show_admin_bar', '__return_false');
+
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
 remove_action('wp_head', 'wp_print_comments');
@@ -249,13 +251,13 @@ function load_svg(string $filename): string
     return '';
 }
 
-// Ajouter une colonne personnalisée dans l'admin pour les messages
+
 add_filter('manage_contact_message_posts_columns', function ($columns) {
-    $columns['is_read'] = 'Lu ?';
+    $columns['is_read'] = 'État de lecture';
     return $columns;
 });
 
-// Remplir la colonne avec le statut "Lu" ou "Non lu"
+
 add_action('manage_contact_message_posts_custom_column', function ($column, $post_id) {
     if ($column === 'is_read') {
         $is_read = get_post_meta($post_id, 'is_read', true);
@@ -267,12 +269,12 @@ add_action('manage_contact_message_posts_custom_column', function ($column, $pos
     }
 }, 10, 2);
 
-// Quand un message est affiché dans l'admin, le marquer comme "Lu"
+
 add_action('add_meta_boxes', function () {
     global $post;
 
     if (get_post_type($post) === 'contact_message') {
-        // Vérifie si ce n'est pas déjà marqué comme lu
+
         $is_read = get_post_meta($post->ID, 'is_read', true);
         if (!$is_read) {
             update_post_meta($post->ID, 'is_read', 1);

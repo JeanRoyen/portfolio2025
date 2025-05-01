@@ -1,7 +1,7 @@
 </main>
 <footer>
     <?php wp_footer(); ?>
-    <div>
+    <section>
         <h2>Coordonnées</h2>
         <ul>
             <li>+32 (0) 471 42 08 54</li>
@@ -9,7 +9,7 @@
             <li>Province de Liège</li>
             <li>Belgique</li>
         </ul>
-    </div>
+    </section>
     <nav>
         <h2>Me suivre</h2>
         <?php

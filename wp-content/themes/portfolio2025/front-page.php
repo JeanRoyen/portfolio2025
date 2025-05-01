@@ -6,6 +6,7 @@
         <h3>Web developper - Fullstack</h3>
     </div>
     <nav>
+        <h3 class="sro">Navigation secondaire</h3>
         <?php
         $links = dw_get_navigation_links('main');
 
@@ -33,7 +34,7 @@
             while ($projects->have_posts()): $projects->the_post();
                 $image = get_field('image', get_the_ID());
                 ?>
-                <div class="projet__item">
+                <section class="project__item">
                     <a href="<?= get_permalink(); ?>" class="project__link">
                         <?php if (!empty($image)): ?>
                             <div class="project__thumb">
@@ -42,7 +43,7 @@
                         <?php endif; ?>
                         <h3 class="project__title"><?= get_the_title(); ?></h3>
                     </a>
-                </div>
+                </section>
             <?php endwhile;
             wp_reset_postdata();
         else: ?>

@@ -43,7 +43,8 @@ $terms = get_terms([
            class="filter-button <?= ($current_filter === $term->slug) ? 'active' : ''; ?>">
             <?= esc_html($term->name); ?>
         </a>
-    <?php endforeach; ?>
+    <?php endforeach;
+    ?>
 </div>
 
 <div class="project__grid">
@@ -62,16 +63,8 @@ $terms = get_terms([
         </div>
     <?php endwhile; ?>
 
-        <div class="pagination">
-            <?= paginate_links([
-                'total' => $query->max_num_pages,
-                'current' => $paged,
-                'prev_text' => __('&laquo; Précédent', 'textdomain'),
-                'next_text' => __('Suivant &raquo;', 'textdomain'),
-            ]); ?>
-        </div>
-
         <?php wp_reset_postdata(); ?>
+
     <?php else : ?>
         <p>Aucun projet trouvé.</p>
     <?php endif; ?>
