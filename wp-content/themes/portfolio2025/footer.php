@@ -10,18 +10,22 @@
             <li>Belgique</li>
         </ul>
     </section>
-    <nav>
+    <nav class="nav__bottom__container">
         <h2>Me suivre</h2>
         <?php
         $links = dw_get_navigation_links('footer');
 
         foreach ($links as $link): ?>
-            <a class="nav__footer__items" href="<?= esc_url($link->href) ?>">
-                <?= esc_html($link->label) ?>
-            </a>
+            <ul>
+                <li><a class="nav__footer__items" href="<?= esc_url($link->href) ?>">
+                        <?= esc_html($link->label) ?>
+                    </a></li>
+            </ul>
+
         <?php endforeach; ?>
     </nav>
     <div>
+        <h2 class="sro">Copyright</h2>
         <p>© <?= get_bloginfo('name'); ?></p>
     </div>
 </footer>

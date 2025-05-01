@@ -3,7 +3,11 @@
  * Template Name: Page Projets
  */
 get_header();
+?>
 
+<h2>Mes projets</h2>
+
+<?php
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 $current_filter = isset($_GET['type']) ? sanitize_text_field($_GET['type']) : '';
 
