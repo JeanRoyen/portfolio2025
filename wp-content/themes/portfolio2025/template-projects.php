@@ -55,16 +55,21 @@ $terms = get_terms([
     <?php if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
         $image = get_field('image', get_the_ID());
         ?>
-        <div class="project-card">
-            <a href="<?php the_permalink(); ?>">
-                <?php if (!empty($image)): ?>
-                    <div class="project__thumb">
-                        <?= responsive_image($image, ['classes' => 'test', 'lazy' => true]) ?>
-                    </div>
-                <?php endif; ?>
-                <h2><?php the_title(); ?></h2>
+        <article class="project-card">
+            <a href="<?= get_permalink(); ?>" class="project-card__link">
+                <span class="sro">Accéder au projet <?= get_the_title(); ?></span>
             </a>
-        </div>
+
+            <div class="project-card__content">
+                <h3 class="project-card__title"><?= get_the_title(); ?></h3>
+            </div>
+
+            <figure class="project-card__fig">
+                <?= responsive_image($image, ['classes' => 'project-card__thumb', 'lazy' => true]); ?>
+            </figure>
+        </article>
+
+
     <?php endwhile; ?>
 
         <?php wp_reset_postdata(); ?>
