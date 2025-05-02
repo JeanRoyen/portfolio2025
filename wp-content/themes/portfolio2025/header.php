@@ -10,15 +10,20 @@
 <body>
 <header>
     <h1 class="sro"><?= get_bloginfo('name') ?></h1>
+    <input type="checkbox" id="menu-toggle" class="burger__checkbox" />
+    <label for="menu-toggle" class="burger__button" aria-label="Ouvrir le menu">
+        <span class="burger__icon"></span>
+    </label>
+
     <nav class="nav">
         <h2 class="sro">Navigation principale</h2>
-        <div class="nav__container">
+        <ul class="nav__container">
             <?php foreach (dw_get_navigation_links('header') as $link): ?>
-                <div class="nav__item nav__item--<?= $link->icon; ?>">
+                <li class="nav__item nav__item--<?= $link->icon; ?>">
                     <a href="<?= $link->href; ?>" class="nav__link"><?= $link->label; ?></a>
-                </div>
+                </li>
             <?php endforeach; ?>
-        </div>
+        </ul>
     </nav>
 </header>
 <main>
