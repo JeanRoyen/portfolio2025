@@ -1,0 +1,152 @@
+@import "../settings/colors.scss";
+
+main {
+  margin-top: 3rem;
+}
+
+.burger__checkbox {
+  position: absolute;
+  left: -9999px;
+}
+
+.burger__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin: 1rem;
+  position: fixed;
+  z-index: 9999;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.burger__icon,
+.burger__icon::before,
+.burger__icon::after {
+  display: block;
+  background: #333;
+  height: 4px;
+  width: 28px;
+  border-radius: 2px;
+  position: relative;
+}
+
+.burger__icon::before,
+.burger__icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+.burger__icon::before {
+  top: -8px;
+}
+.burger__icon::after {
+  top: 8px;
+}
+
+.burger__checkbox:checked + .burger__button .burger__icon {
+  background: transparent;
+}
+.burger__checkbox:checked + .burger__button .burger__icon::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+.burger__checkbox:checked + .burger__button .burger__icon::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+/* --- Navigation mobile --- */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100vh;
+  background: $dark-blue;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  padding-top: 5rem;
+}
+
+.burger__checkbox:checked ~ .nav {
+  transform: translateX(0);
+}
+
+.nav__container {
+  list-style: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-left: 2rem;
+}
+
+.nav__link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.25rem;
+}
+
+/* --- Desktop version --- */
+@media screen and (min-width: 768px) {
+  main {
+    margin-top: 8rem;
+  }
+
+
+  .burger__button {
+    display: none;
+  }
+
+  .nav {
+    position: absolute;
+    transform: none;
+    background: $dark-blue;
+    height: auto;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    width: 100%;
+    z-index: 9999;
+  }
+
+  .nav__container {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    padding-left: 0;
+    align-items: center;
+    margin-left: 8%;
+    margin-right: 8%;
+  }
+
+  .nav__item--right {
+    margin-left: auto;
+  }
+
+
+  .nav__link {
+    text-decoration: none;
+    color: $light-blue;
+    padding: 0.8rem;
+    font-size: 1rem;
+
+    &:hover {
+      color: white;
+      border-bottom: 2px solid $light-blue;
+    }
+
+    &[href="http://portfolio2025.test/contact/"] {
+      color: $dark-blue;
+      background-color: $light-blue;
+      padding: 0.6rem;
+      border-radius: 0.3rem;
+    }
+  }
+}

@@ -1,0 +1,81 @@
+@import "../settings/colors.scss";
+
+.project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column; // mobile first
+  border-radius: 0.6rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  margin-bottom: 2rem;
+
+  &__link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  &__content {
+    background-color: $dark-blue;
+    color: white;
+    padding: 1.5rem;
+    z-index: 0;
+
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    margin: 0;
+  }
+
+  &__excerpt {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+  }
+
+  &__fig {
+    position: relative;
+    margin: 0;
+    padding-top: 56.25%; // ratio 16:9 mobile
+  }
+
+  &__thumb {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  // Desktop
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    min-height: 500px;
+
+    &__content {
+      width: 25%;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+    }
+
+    &__fig {
+      width: 75%;
+      padding-top: 0;
+      height: auto;
+      aspect-ratio: auto;
+    }
+
+    &__thumb {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+

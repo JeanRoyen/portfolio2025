@@ -1,0 +1,17 @@
+@import "../settings/colors.scss";
+
+footer {
+  display: flex;
+  background-color: $dark-blue;
+  color: $light-blue;
+  justify-content: space-around;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+
+.nav__footer__items {
+  text-decoration: none;
+  color: $light-blue;
+  font-weight: bold;
+}
