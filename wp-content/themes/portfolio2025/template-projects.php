@@ -4,8 +4,12 @@
  */
 get_header();
 ?>
-
-<h2>Mes projets</h2>
+<div>
+    <h2>Mes projets</h2>
+    <p>Découvrez une sélection de mes projets en design web, alliant créativité, ergonomie et performance. Chaque
+        réalisation reflète mon engagement à concevoir des interfaces intuitives et esthétiques, adaptées aux besoins
+        des utilisateurs. En parallèle, je m’exerce régulièrement à travers des challenges techniques.</p>
+</div>
 
 <?php
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
