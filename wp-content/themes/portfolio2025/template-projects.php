@@ -11,6 +11,8 @@ get_header();
         des utilisateurs. En parallèle, je m’exerce régulièrement à travers des challenges techniques.</p>
 </div>
 
+
+
 <?php
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 $current_filter = isset($_GET['type']) ? sanitize_text_field($_GET['type']) : '';
