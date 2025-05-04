@@ -1,0 +1,120 @@
+@import "../settings/colors.scss";
+
+.contact {
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &__content {
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: $dark-blue;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &__form {
+    background-color: $bg-white;
+    padding: 2rem 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  &__success {
+    padding: 1rem;
+    color: $dark-blue;
+    text-align: center;
+    font-weight: bold;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__group-inline {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+
+      .field {
+        flex: 1;
+      }
+    }
+  }
+
+  &__submit {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  &__label {
+    font-weight: bold;
+    color: $dark-blue;
+  }
+
+  &__input {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid $dark-blue;
+    background: white;
+    font-size: 1rem;
+    color: $dark-blue;
+    transition: border-color 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: $light-blue;
+    }
+  }
+
+  textarea.field__input {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  &__error {
+    font-size: 0.9rem;
+    color: red;
+  }
+}
+
+.btn {
+  background-color: $dark-blue;
+  color: $light-blue;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($dark-blue, 10%);
+  }
+}

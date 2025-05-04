@@ -24,19 +24,22 @@ if(have_posts()): while(have_posts()): the_post(); ?>
             <?php else: ?>
                 <form action="<?= esc_url(admin_url('admin-post.php')); ?>" method="POST" class="form">
                     <fieldset class="form__fields">
-                        <div class="field">
-                            <label for="firstname" class="field__label">Prénom</label>
-                            <input type="text" name="firstname" id="firstname" class="field__input">
-                            <?php if(isset($errors['firstname'])): ?>
-                                <p class="field__error"><?= $errors['firstname']; ?></p>
-                            <?php endif; ?>
-                        </div>
-                        <div class="field">
-                            <label for="lastname" class="field__label">Nom</label>
-                            <input type="text" name="lastname" id="lastname" class="field__input">
-                            <?php if(isset($errors['lastname'])): ?>
-                                <p class="field__error"><?= $errors['lastname']; ?></p>
-                            <?php endif; ?>
+                        <div class="form__group-inline">
+                            <div class="field">
+                                <label for="firstname" class="field__label">Prénom</label>
+                                <input type="text" name="firstname" id="firstname" class="field__input">
+                                <?php if(isset($errors['firstname'])): ?>
+                                    <p class="field__error"><?= $errors['firstname']; ?></p>
+                                <?php endif; ?>
+                            </div>
+
+                            <div class="field">
+                                <label for="lastname" class="field__label">Nom</label>
+                                <input type="text" name="lastname" id="lastname" class="field__input">
+                                <?php if(isset($errors['lastname'])): ?>
+                                    <p class="field__error"><?= $errors['lastname']; ?></p>
+                                <?php endif; ?>
+                            </div>
                         </div>
                         <div class="field">
                             <label for="email" class="field__label">Adresse mail</label>
