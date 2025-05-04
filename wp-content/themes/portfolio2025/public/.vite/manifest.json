@@ -1,8 +1,12 @@
 {
   "wp-content/themes/portfolio2025/resources/css/styles.scss": {
-    "file": "assets/css-YMwPDsfx.css",
+    "file": "assets/css-BP_ljgl4.css",
     "src": "wp-content/themes/portfolio2025/resources/css/styles.scss",
     "isEntry": true
+  },
+  "wp-content/themes/portfolio2025/resources/icons/bg-liege.svg": {
+    "file": "assets/bg-liege-0NF8Oc0G.svg",
+    "src": "wp-content/themes/portfolio2025/resources/icons/bg-liege.svg"
   },
   "wp-content/themes/portfolio2025/resources/js/main.js": {
     "file": "assets/js-l0sNRNKZ.js",

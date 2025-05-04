@@ -1,4 +1,13 @@
+@import "../settings/colors.scss";
+
 h2 {
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+body {
+  background-color: $bg-white;
+  background-image: url('/wp-content/themes/portfolio2025/resources/icons/bg-liege.svg');
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
