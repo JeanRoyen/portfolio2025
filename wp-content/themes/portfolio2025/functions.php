@@ -240,16 +240,35 @@ function responsive_image($image, $settings): bool|string
     return ob_get_clean();
 }
 
-function load_svg(string $filename): string
+function load_svg(string $filename, string $title = '', string $alt = ''): string
 {
     $path = get_template_directory() . '/resources/icons/' . $filename . '.svg';
 
-    if (file_exists($path)) {
-        return file_get_contents($path);
+    if (!file_exists($path)) {
+        return '';
     }
 
-    return '';
+    $svg = file_get_contents($path);
+
+    // Construire les attributs d’accessibilité
+    $attributes = ($title || $alt)
+        ? ' role="img" aria-label="' . esc_attr($alt ?: $title) . '"'
+        : ' role="presentation" aria-hidden="true"';
+
+    // Injecter les attributs dans la première balise <svg ...>
+    $svg = preg_replace('/<svg\b(.*?)>/i', '<svg$1' . $attributes . '>', $svg, 1);
+
+    // Ajouter <title> si fourni
+    if ($title) {
+        $svg = preg_replace('/(<svg[^>]*>)/i', '$1<title>' . esc_html($title) . '</title>', $svg, 1);
+    }
+
+    return $svg;
 }
+
+
+
+
 
 
 add_filter('manage_contact_message_posts_columns', function ($columns) {
