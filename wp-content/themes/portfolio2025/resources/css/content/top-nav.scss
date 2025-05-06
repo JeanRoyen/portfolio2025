@@ -133,20 +133,21 @@ main {
 
   .nav__link {
     text-decoration: none;
-    color: $light-blue;
+    color: $bg-white;
     padding: 0.8rem;
     font-size: 1rem;
 
     &:hover {
       color: white;
-      border-bottom: 2px solid $light-blue;
+      border-bottom: 2px solid $bg-white;
     }
 
     &[href="http://portfolio2025.test/contact/"] {
       color: $dark-blue;
-      background-color: $light-blue;
+      background-color: $bg-white;
       padding: 0.6rem;
       border-radius: 0.3rem;
+      border-bottom: 0;
     }
   }
 }
