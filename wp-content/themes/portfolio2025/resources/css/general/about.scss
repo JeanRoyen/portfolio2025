@@ -1,0 +1,104 @@
+@import "../settings/colors.scss";
+
+.self {
+  display: flex;
+  flex-direction: column-reverse;
+  background-color: $bg-white;
+  border-radius: 0.6rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  margin-bottom: 2rem;
+
+  .text-media__content-container {
+    padding: 2rem;
+    background-color: $dark-blue;
+    color: $bg-white;
+  }
+
+  .text-media__content-supline {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    color: $light-blue;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .text-media__content-headline {
+    font-size: 1.75rem;
+    margin: 0 0 1rem;
+    font-weight: 800;
+  }
+
+  .text-media__content-subline {
+    font-size: 1rem;
+    color: lighten($light-blue, 15%);
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+
+  .text-media__content-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .text-media__content-link {
+    display: inline-block;
+    background-color: $light-blue;
+    color: $dark-blue;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 0.75rem 2rem;
+    border-radius: 0.3rem;
+
+    &:hover {
+      background-color: darken($light-blue, 10%);
+    }
+  }
+
+  .text-media__position {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    picture {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .text-media__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    min-height: 450px;
+
+    .text-media__content-container {
+      flex: 3; // 60%
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-media__position {
+      flex: 2; // 40%
+      height: auto;
+
+      .text-media__image {
+        width: 100%;
+        height: 100%;
+        min-height: 450px;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+  }
+}

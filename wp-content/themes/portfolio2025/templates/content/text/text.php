@@ -1,6 +1,6 @@
 <?php $headline = get_sub_field('headline') ?>
 <?php $text = get_sub_field('text') ?>
-<?php $class = get_sub_field('cs_class') ?>
+<?php $class = get_sub_field('class') ?>
 
 <div class="div_container_section">
     <section class="section_container <?= $class !== '' ? $class : '' ?>">

@@ -45,6 +45,7 @@ main {
 .burger__icon::before {
   top: -8px;
 }
+
 .burger__icon::after {
   top: 8px;
 }
@@ -52,10 +53,12 @@ main {
 .burger__checkbox:checked + .burger__button .burger__icon {
   background: transparent;
 }
+
 .burger__checkbox:checked + .burger__button .burger__icon::before {
   transform: rotate(45deg);
   top: 0;
 }
+
 .burger__checkbox:checked + .burger__button .burger__icon::after {
   transform: rotate(-45deg);
   top: 0;
@@ -100,6 +103,13 @@ main {
     margin-top: 8rem;
   }
 
+  .nav__container li:nth-child(4) .nav__link {
+    color: $dark-blue;
+    background-color: $bg-white;
+    padding: 0.6rem;
+    border-radius: 0.3rem;
+    border-bottom: 0;
+  }
 
   .burger__button {
     display: none;
@@ -140,14 +150,6 @@ main {
     &:hover {
       color: white;
       border-bottom: 2px solid $bg-white;
-    }
-
-    &[href="http://portfolio2025.test/contact/"] {
-      color: $dark-blue;
-      background-color: $bg-white;
-      padding: 0.6rem;
-      border-radius: 0.3rem;
-      border-bottom: 0;
     }
   }
 }

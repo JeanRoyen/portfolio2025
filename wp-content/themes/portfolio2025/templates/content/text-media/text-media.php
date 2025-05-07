@@ -1,13 +1,14 @@
 <?php $supline = get_sub_field('supline') ?>
 <?php $headline = get_sub_field('headline') ?>
-<?php $subline = get_sub_field('subline') ?>
 <?php $text = get_sub_field('text') ?>
 <?php $cta = get_sub_field('cta') ?>
 <?php $image = get_sub_field('image') ?>
 <?php $media_position = get_sub_field('media_position') ?>
 <?php $media_type = get_sub_field('media_type') ?>
+<?php $class = get_sub_field('class') ?>
 
-<section class="text-media">
+
+<section class="section_container <?= $class !== '' ? $class : '' ?>">
     <div class="text-media__content-container">
         <?php if ($supline !== '' && isset($supline)): ?>
             <p class="text-media__content-supline">
