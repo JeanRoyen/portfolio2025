@@ -1,0 +1,84 @@
+@import "../settings/colors";
+
+.parcours__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  position: relative;
+  padding: 2rem 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background-color: $dark-blue;
+    transform: translateX(-50%);
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &::before {
+      display: block;
+    }
+  }
+}
+
+.parcours {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  gap: 1rem 2rem;
+  background-color: $dark-blue;
+  padding: 2rem;
+  border-radius: 0.6rem;
+  color: $bg-white;
+
+  .parcours_card {
+    font-size: 4rem;
+    font-weight: 800;
+    color: $light-blue;
+    grid-row: span 2;
+    align-self: center;
+    order: 1;
+  }
+
+  .div_project_h2 {
+    font-size: 1.5rem;
+    margin: 0;
+    order: 2;
+  }
+
+  .parcours_description {
+    font-size: 1rem;
+    margin: 0;
+    order: 3;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 30%;
+
+    &:nth-child(odd) {
+      justify-self: flex-start;
+    }
+
+    &:nth-child(even) {
+      justify-self: flex-end;
+
+      .parcours_card {
+        text-align: left;
+      }
+
+      .div_project_h2,
+      .parcours_description {
+        text-align: left;
+      }
+    }
+  }
+}
