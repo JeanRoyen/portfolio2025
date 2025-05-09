@@ -45,7 +45,6 @@
                         <?= responsive_image($image, ['classes' => 'project-card__thumb', 'lazy' => true]) ?>
                     </figure>
                 </article>
-
             <?php endwhile;
             wp_reset_postdata();
         else: ?>
