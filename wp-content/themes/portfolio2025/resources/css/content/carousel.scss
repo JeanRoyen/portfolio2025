@@ -1,5 +1,7 @@
 .icon-carousel {
   display: flex;
+  margin-bottom: 3rem;
+  gap: 1rem;
 }
 
 .icon-carousel > * {
@@ -11,4 +13,8 @@
   width: 100%;
   height: auto;
   max-width: 100%;
+}
+
+.carousel-container {
+  margin-top: 1rem;
 }

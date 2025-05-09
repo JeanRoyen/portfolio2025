@@ -4,7 +4,7 @@
 include_once('acf.php');
 
 // Activer la session PHP
-if(session_status() === PHP_SESSION_NONE) {
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
@@ -17,7 +17,7 @@ add_filter('use_block_editor_for_post', '__return_false');
 // Disable Gutenberg for widgets.
 add_filter('use_widgets_block_editor', '__return_false');
 // Disable front-end style injections
-add_action('wp_enqueue_scripts', function() {
+add_action('wp_enqueue_scripts', function () {
     // Remove CSS on the front end.
     wp_dequeue_style('wp-block-library');
     // Remove Gutenberg theme.
@@ -80,7 +80,7 @@ function dw_asset(string $file): string
 }
 
 // Activer l'utilisation d'images "de couverture" sur les post_types customs.
-add_theme_support('post-thumbnails', ['recipe','trip']);
+add_theme_support('post-thumbnails', ['recipe', 'trip']);
 
 // Enregistrer de nouveaux "types de contenus" qui seront stockés dans la table
 // "wp_posts", avec un identifiant de type spécifique dans la colonne "post_type":
@@ -124,7 +124,7 @@ function dw_get_navigation_links(string $location): array
     // Récupérer l'objet WP pour le menu à la location $location
     $locations = get_nav_menu_locations();
 
-    if(! isset($locations[$location])) {
+    if (!isset($locations[$location])) {
         return [];
     }
 
@@ -154,7 +154,7 @@ function dw_get_navigation_links(string $location): array
 add_action('admin_post_dw_contact_form_submit', 'dw_handle_contact_form_submit');
 add_action('admin_post_nopriv_dw_contact_form_submit', 'dw_handle_contact_form_submit');
 
-require_once(__DIR__.'/forms/ContactForm.php');
+require_once(__DIR__ . '/forms/ContactForm.php');
 
 register_post_type('contact_message', [
     'label' => 'Messages',
@@ -163,7 +163,7 @@ register_post_type('contact_message', [
     'show_ui' => true,
     'menu_position' => 10,
     'menu_icon' => 'dashicons-email',
-    'supports' => ['title','editor'],
+    'supports' => ['title', 'editor'],
 ]);
 
 function dw_handle_contact_form_submit()
@@ -210,9 +210,9 @@ function responsive_image($image, $settings): bool|string
 
 // Récupération des URLS et attributs pour l'image en taille "full"
 // Wordpress génère automatiquement un srcset basé sur les tailles existantes
-    $src = wp_get_attachment_image_url($image_id, 'medium');
-    $srcset = wp_get_attachment_image_srcset($image_id, 'medium');
-    $sizes = wp_get_attachment_image_sizes($image_id, 'medium');
+    $src = wp_get_attachment_image_url($image_id, 'full');
+    $srcset = wp_get_attachment_image_srcset($image_id, 'full');
+    $sizes = wp_get_attachment_image_sizes($image_id, 'full');
 
 // Gestion de l'attribut de chargement "lazy" ou "eager" selon les paramètres.
     $lazy = $settings['lazy'] ?? 'eager';
@@ -226,15 +226,13 @@ function responsive_image($image, $settings): bool|string
     ob_start();
     ?>
     <picture>
-        <!-- Ici, vous pouvez ajouter manuellement des balises <source> pour d'autres formats (WebP, AVIF, etc.)
-             si ces formats sont disponibles via un plugin ou un traitement personnalisé. -->
         <img
-            src="<?= esc_url($src) ?>"
-            alt="<?= esc_attr($alt) ?>"
-            loading="<?= esc_attr($lazy) ?>"
-            srcset="<?= esc_attr($srcset) ?>"
-            sizes="<?= esc_attr($sizes) ?>"
-            class="<?= esc_attr($classes) ?>">
+                src="<?= esc_url($src) ?>"
+                alt="<?= esc_attr($alt) ?>"
+                loading="<?= esc_attr($lazy) ?>"
+                srcset="<?= esc_attr($srcset) ?>"
+                sizes="<?= esc_attr($sizes) ?>"
+                class="<?= esc_attr($classes) ?>">
     </picture>
     <?php
     return ob_get_clean();
@@ -265,10 +263,6 @@ function load_svg(string $filename, string $title = '', string $alt = ''): strin
 
     return $svg;
 }
-
-
-
-
 
 
 add_filter('manage_contact_message_posts_columns', function ($columns) {

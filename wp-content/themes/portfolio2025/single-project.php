@@ -1,7 +1,7 @@
 <?php get_header(); ?>
-
-<?php include('templates/content/stage/stage.php') ?>
-<?php include('templates/content/flexible.php') ?>
+<div class="single-project">
+    <?php include('templates/content/flexible.php') ?>
+</div>
 
 <?php get_footer(); ?>
 

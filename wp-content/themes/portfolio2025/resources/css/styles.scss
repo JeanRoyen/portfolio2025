@@ -10,12 +10,14 @@
 @use 'content/form';
 @use 'content/filter';
 @use 'content/parcours';
+@use 'content/gallery';
 
 
 // General
 @use 'general/front-page';
 @use 'general/general';
 @use 'general/about';
+@use 'general/single-project';
 
 // Settings
 @use 'settings/margin';

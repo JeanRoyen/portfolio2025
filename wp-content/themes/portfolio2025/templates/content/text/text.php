@@ -3,7 +3,7 @@
 <?php $class = get_sub_field('class') ?>
 
 <div class="div_container_section">
-    <section class="section_container <?= $class !== '' ? $class : '' ?>">
+    <section class="section_container-text <?= $class !== '' ? $class : '' ?>">
         <?php if ($headline !== '' && isset($headline)): ?>
             <h2 class="div_project_h2">
                 <?= $headline ?>

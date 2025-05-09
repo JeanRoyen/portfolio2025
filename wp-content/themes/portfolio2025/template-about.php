@@ -7,7 +7,7 @@
 
 <?php include('templates/content/flexible.php') ?>
 
-    <section>
+    <section class="carousel-container">
         <h2>Mes outils de travail</h2>
         <div class="icon-carousel">
             <?= load_svg('css3-plain', 'Logo CSS3', 'Icône CSS3') ?>

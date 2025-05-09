@@ -1,0 +1,45 @@
+@import "../settings/colors.scss";
+
+.section_container_gallery {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.gallery_flex_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.div_container {
+  flex: 1 1 calc(50% - 0.5rem);
+
+  picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.project_img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.6rem;
+  object-fit: cover;
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .section_container_gallery {
+    padding: 2rem;
+  }
+
+  .gallery_flex_wrapper {
+    gap: 2rem;
+  }
+
+  .div_container {
+    flex: 1 1 calc(50% - 1rem);
+  }
+}
