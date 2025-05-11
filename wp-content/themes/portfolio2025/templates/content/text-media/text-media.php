@@ -16,7 +16,7 @@
             </p>
         <?php endif; ?>
         <?php if ($headline !== '' && isset($headline)): ?>
-            <h2 class="text-media__content-headline" aria-level="2">
+            <h2 class="text-media__content-headline" role="heading" aria-level="2">
                 <?= $headline ?>
             </h2>
         <?php endif; ?>
@@ -40,7 +40,7 @@
     </div>
     <?php if (!empty($image)): ?>
         <div class="text-media__position text-media__position--<?= $media_position ?>">
-            <?= responsive_image($image, ['classes' => 'text-media__image', 'lazy' => true]) ?>
+            <?= responsive_image($image, ['classes' => 'text-media__image', 'lazy' => 'lazy']) ?>
         </div>
     <?php endif; ?>
 </section>

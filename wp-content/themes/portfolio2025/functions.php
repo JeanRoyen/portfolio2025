@@ -214,9 +214,6 @@ function responsive_image($image, $settings): bool|string
     $srcset = wp_get_attachment_image_srcset($image_id, 'full');
     $sizes = wp_get_attachment_image_sizes($image_id, 'full');
 
-// Gestion de l'attribut de chargement "lazy" ou "eager" selon les paramètres.
-    $lazy = $settings['lazy'] ?? 'eager';
-
 // Gestion des classes (si des classes sont fournies dans $settings).
     $classes = '';
     if (!empty($settings['classes'])) {
@@ -229,7 +226,6 @@ function responsive_image($image, $settings): bool|string
         <img
                 src="<?= esc_url($src) ?>"
                 alt="<?= esc_attr($alt) ?>"
-                loading="<?= esc_attr($lazy) ?>"
                 srcset="<?= esc_attr($srcset) ?>"
                 sizes="<?= esc_attr($sizes) ?>"
                 class="<?= esc_attr($classes) ?>">
@@ -248,21 +244,14 @@ function load_svg(string $filename, string $title = '', string $alt = ''): strin
 
     $svg = file_get_contents($path);
 
-    // Construire les attributs d’accessibilité
-    $attributes = ($title || $alt)
-        ? ' role="img" aria-label="' . esc_attr($alt ?: $title) . '"'
-        : ' role="presentation" aria-hidden="true"';
-
-    // Injecter les attributs dans la première balise <svg ...>
-    $svg = preg_replace('/<svg\b(.*?)>/i', '<svg$1' . $attributes . '>', $svg, 1);
-
-    // Ajouter <title> si fourni
+    // Injecter uniquement <title> si fourni
     if ($title) {
         $svg = preg_replace('/(<svg[^>]*>)/i', '$1<title>' . esc_html($title) . '</title>', $svg, 1);
     }
 
     return $svg;
 }
+
 
 
 add_filter('manage_contact_message_posts_columns', function ($columns) {

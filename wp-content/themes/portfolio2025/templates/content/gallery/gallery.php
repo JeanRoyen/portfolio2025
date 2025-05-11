@@ -12,7 +12,7 @@
         <div class="gallery_flex_wrapper">
             <?php foreach ($gallery as $image): ?>
                 <div class="div_container">
-                    <?= responsive_image($image, ['classes' => 'project_img', 'lazy' => true]) ?>
+                    <?= responsive_image($image, ['classes' => 'project_img', 'lazy' => 'lazy']) ?>
                 </div>
             <?php endforeach; ?>
         </div>

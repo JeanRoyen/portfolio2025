@@ -11,7 +11,7 @@
 <header>
     <h1 class="sro"><?= get_bloginfo('name') ?></h1>
     <input type="checkbox" id="menu-toggle" class="burger__checkbox" />
-    <label for="menu-toggle" class="burger__button" aria-label="Ouvrir le menu">
+    <label for="menu-toggle" class="burger__button">
         <span class="burger__icon"></span>
     </label>
 

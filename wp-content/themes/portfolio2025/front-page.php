@@ -42,7 +42,7 @@
                     </div>
 
                     <figure class="project-card__fig">
-                        <?= responsive_image($image, ['classes' => 'project-card__thumb', 'lazy' => true]) ?>
+                        <?= responsive_image($image, ['classes' => 'project-card__thumb']) ?>
                     </figure>
                 </article>
             <?php endwhile;
