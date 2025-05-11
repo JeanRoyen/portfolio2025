@@ -17,41 +17,77 @@
     </nav>
 </section>
 
-<section class="projects">
-    <h2>Projets récents</h2>
-    <div class="projects__list">
-        <?php
-        $projects = new WP_Query([
-            'post_type' => 'project',
-            'posts_per_page' => 3,
-            'orderby' => 'date',
-            'order' => 'DESC',
-        ]);
-        if ($projects->have_posts()):
-            while ($projects->have_posts()): $projects->the_post();
-                $image = get_field('image', get_the_ID());
-                ?>
-                <article class="project-card">
-                    <a href="<?= get_permalink(); ?>" class="project-card__link">
-                        <span class="sro">Voir le projet "<?= esc_html(get_the_title()); ?>"</span>
-                    </a>
+<?php
+$paged = get_query_var('paged') ? get_query_var('paged') : 1;
+$current_filter = isset($_GET['type']) ? sanitize_text_field($_GET['type']) : '';
 
-                    <div class="project-card__content">
-                        <h3 class="project-card__title"><?= get_the_title(); ?></h3>
-                        <p class="project-card__excerpt"><?= get_the_excerpt(); ?></p>
-                    </div>
+$args = [
+    'post_type' => 'project',
+    'posts_per_page' => 6,
+    'paged' => $paged,
+];
 
-                    <figure class="project-card__fig">
-                        <?= responsive_image($image, ['classes' => 'project-card__thumb']) ?>
-                    </figure>
-                </article>
-            <?php endwhile;
-            wp_reset_postdata();
-        else: ?>
-            <li>Aucun projet à afficher.</li>
-        <?php endif; ?>
-    </div>
-</section>
+if ($current_filter !== '') {
+    $args['tax_query'] = [
+        [
+            'taxonomy' => 'project_type',
+            'field' => 'slug',
+            'terms' => $current_filter,
+        ]
+    ];
+}
+
+$query = new WP_Query($args);
+
+// Récupérer les termes de la taxonomie
+$terms = get_terms([
+    'taxonomy' => 'project_type',
+    'hide_empty' => false,
+]);
+?>
+
+<div class="project__filter-buttons">
+    <a href="<?= esc_url(get_permalink()); ?>"
+       class="filter-button <?= ($current_filter === '') ? 'active' : ''; ?>">
+        Tous
+    </a>
+
+    <?php foreach ($terms as $term): ?>
+        <a href="<?= esc_url(get_permalink()) . '?type=' . $term->slug; ?>"
+           class="filter-button <?= ($current_filter === $term->slug) ? 'active' : ''; ?>">
+            <?= esc_html($term->name); ?>
+        </a>
+    <?php endforeach;
+    ?>
+</div>
+
+<div class="project__grid">
+    <?php if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
+        $image = get_field('image', get_the_ID());
+        ?>
+        <article class="project-card">
+            <a href="<?= get_permalink(); ?>" class="project-card__link">
+                <span class="sro">Accéder au projet <?= get_the_title(); ?></span>
+            </a>
+
+            <div class="project-card__content">
+                <h3 class="project-card__title"><?= get_the_title(); ?></h3>
+            </div>
+
+            <figure class="project-card__fig">
+                <?= responsive_image($image, ['classes' => 'project-card__thumb', 'lazy' => true]); ?>
+            </figure>
+        </article>
+
+
+    <?php endwhile; ?>
+
+        <?php wp_reset_postdata(); ?>
+
+    <?php else : ?>
+        <p>Aucun projet trouvé.</p>
+    <?php endif; ?>
+</div>
 <div class="projects__more">
     <a href="<?= esc_url(home_url('/mes-projets/')); ?>" class="btn-dark">
         Voir plus de projets
