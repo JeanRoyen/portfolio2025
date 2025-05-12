@@ -27,7 +27,7 @@ if(have_posts()): while(have_posts()): the_post(); ?>
                         <div class="form__group-inline">
                             <div class="field">
                                 <label for="firstname" class="field__label">Prénom</label>
-                                <input type="text" name="firstname" id="firstname" class="field__input">
+                                <input type="text" name="firstname" id="firstname" class="field__input" placeholder="Jon">
                                 <?php if(isset($errors['firstname'])): ?>
                                     <p class="field__error"><?= $errors['firstname']; ?></p>
                                 <?php endif; ?>
@@ -35,7 +35,7 @@ if(have_posts()): while(have_posts()): the_post(); ?>
 
                             <div class="field">
                                 <label for="lastname" class="field__label">Nom</label>
-                                <input type="text" name="lastname" id="lastname" class="field__input">
+                                <input type="text" name="lastname" id="lastname" class="field__input" placeholder="Doe">
                                 <?php if(isset($errors['lastname'])): ?>
                                     <p class="field__error"><?= $errors['lastname']; ?></p>
                                 <?php endif; ?>
@@ -43,21 +43,21 @@ if(have_posts()): while(have_posts()): the_post(); ?>
                         </div>
                         <div class="field">
                             <label for="email" class="field__label">Adresse mail</label>
-                            <input type="email" name="email" id="email" class="field__input">
+                            <input type="email" name="email" id="email" class="field__input" placeholder="JonDoe@mail.com">
                             <?php if(isset($errors['email'])): ?>
                                 <p class="field__error"><?= $errors['email']; ?></p>
                             <?php endif; ?>
                         </div>
                         <div class="field">
                             <label for="subject" class="field__label">Sujet</label>
-                            <input type="text" name="subject" id="subject" class="field__input">
+                            <input type="text" name="subject" id="subject" class="field__input" placeholder="Mon sujet">
                             <?php if(isset($errors['subject'])): ?>
                                 <p class="field__error"><?= $errors['subject']; ?></p>
                             <?php endif; ?>
                         </div>
                         <div class="field">
                             <label for="message" class="field__label">Message</label>
-                            <textarea name="message" id="message" class="field__input"></textarea>
+                            <textarea name="message" id="message" class="field__input" placeholder="Mon message"></textarea>
                             <?php if(isset($errors['message'])): ?>
                                 <p class="field__error"><?= $errors['message']; ?></p>
                             <?php endif; ?>
