@@ -1,5 +1,11 @@
 @import "../settings/colors.scss";
 
+
+.others__title {
+  margin-top: 2rem;
+  padding-bottom: 0;
+}
+
 .self {
   display: flex;
   flex-direction: column-reverse;

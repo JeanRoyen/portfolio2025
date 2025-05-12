@@ -1,66 +1,70 @@
 @import "../settings/colors.scss";
 
-.section_container {
-  display: flex;
-  flex-direction: column;
-  background-color: $dark-blue;
-  color: $bg-white;
-  padding: 1rem;
-  margin-bottom: 2rem;
-  border-radius: 0.6rem;
-  position: relative;
-  overflow: hidden;
-}
 
-.section_container-text{
-  margin-left: 0;
-  margin-right: 0;
-}
+.single-project {
 
-.section_container_gallery {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.text-media__content-container {
-  width: 100%;
-}
-
-.text-media__content-text > p{
-  margin-bottom: 1rem;
-}
-
-
-.picture {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  margin-top: 1rem;
-}
-
-.text-media__image {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  border-radius: 0.4rem;
-  object-fit: cover;
-}
-
-@media screen and (min-width: 768px) {
   .section_container {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    background-color: $dark-blue;
+    color: $bg-white;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 0.6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section_container-text{
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .section_container_gallery {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .text-media__content-container {
-    width: 60%;
-    padding-right: 2rem;
+    width: 100%;
   }
 
+  .text-media__content-text > p{
+    margin-bottom: 1rem;
+  }
+
+
   .picture {
-    width: 35%;
-    margin-top: 0;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .text-media__image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 0.4rem;
+    object-fit: cover;
+  }
+
+  @media screen and (min-width: 768px) {
+    .section_container {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 2rem;
+    }
+
+    .text-media__content-container {
+      width: 60%;
+      padding-right: 2rem;
+    }
+
+    .picture {
+      width: 35%;
+      margin-top: 0;
+    }
   }
 }

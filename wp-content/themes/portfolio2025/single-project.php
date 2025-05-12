@@ -3,7 +3,7 @@
     <?php include('templates/content/flexible.php') ?>
 </div>
 <div>
-    <h2>Mes autres projets</h2>
+    <h2 class="others__title">Mes autres projets</h2>
     <div class="div_item_project">
         <?php
         $other_projects = new WP_Query([
