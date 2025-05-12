@@ -7,8 +7,30 @@ footer {
   justify-content: space-around;
   padding-top: 2rem;
   padding-bottom: 2rem;
-}
 
+  h2 {
+    font-size: 1rem;
+  }
+
+  a,
+  p,
+  li {
+    font-size: 0.875rem;
+  }
+
+  // Version desktop
+  @media screen and (min-width: 768px) {
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    a,
+    p,
+    li {
+      font-size: 1rem;
+    }
+  }
+}
 
 .nav__footer__items {
   text-decoration: none;
