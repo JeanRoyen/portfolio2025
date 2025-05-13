@@ -1,0 +1,1 @@
+const r=document.querySelectorAll(".project-card");r.forEach(e=>e.classList.add("is-hidden"));const c=new IntersectionObserver((e,t)=>{e.forEach(s=>{s.isIntersecting&&(s.target.classList.add("is-visible"),s.target.classList.remove("is-hidden"),t.unobserve(s.target))})},{threshold:.1});r.forEach(e=>c.observe(e));
