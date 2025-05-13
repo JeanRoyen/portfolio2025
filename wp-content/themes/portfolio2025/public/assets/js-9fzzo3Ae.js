@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",()=>{const t=document.querySelectorAll(".project-card");t.forEach(e=>e.classList.add("is-hidden"));const r=new IntersectionObserver((e,d)=>{e.forEach(s=>{s.isIntersecting&&(s.target.classList.add("is-visible"),s.target.classList.remove("is-hidden"),d.unobserve(s.target))})},{threshold:.1});t.forEach(e=>r.observe(e))});
