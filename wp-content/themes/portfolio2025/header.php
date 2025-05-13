@@ -29,7 +29,6 @@
                     <a href="<?= $link->href; ?>" class="nav__link"><?= $link->label; ?></a>
                 </li>
             <?php endforeach; ?>
-
         </ul>
     </nav>
 </header>

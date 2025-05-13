@@ -25,7 +25,7 @@
         <?php endforeach; ?>
             </ul>
     </nav>
-    <div>
+    <div class="copyright">
         <h2 class="sro">Copyright</h2>
         <p>© <?= get_bloginfo('name'); ?></p>
     </div>

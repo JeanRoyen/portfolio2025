@@ -19,6 +19,11 @@ footer {
     line-height: 2rem;
   }
 
+  .copyright {
+    display: flex;
+    align-items: flex-end;
+  }
+
   // Version desktop
   @media screen and (min-width: 768px) {
     h2 {
