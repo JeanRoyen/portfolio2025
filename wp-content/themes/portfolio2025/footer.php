@@ -15,20 +15,16 @@
         <?php
         $links = dw_get_navigation_links('footer'); ?>
 
-            <ul>
-                <?php
-        foreach ($links as $link): ?>
+        <ul>
+            <?php
+            foreach ($links as $link): ?>
                 <li><a class="nav__footer__items" href="<?= esc_url($link->href) ?>">
                         <?= esc_html($link->label) ?>
                     </a></li>
 
-        <?php endforeach; ?>
-            </ul>
+            <?php endforeach; ?>
+        </ul>
     </nav>
-    <div class="copyright">
-        <h2 class="sro">Copyright</h2>
-        <p>© <?= get_bloginfo('name'); ?></p>
-    </div>
 </footer>
 </body>
 </html>

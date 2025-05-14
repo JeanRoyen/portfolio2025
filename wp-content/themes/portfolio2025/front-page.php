@@ -47,10 +47,11 @@ $terms = get_terms([
 ?>
 
 <div class="project__filter-buttons">
-    <a href="<?= esc_url(get_permalink()); ?>"
+    <a href="<?= esc_url(remove_query_arg('type', get_permalink())); ?>"
        class="filter-button <?= ($current_filter === '') ? 'active' : ''; ?>">
         Tous
     </a>
+
 
     <?php foreach ($terms as $term): ?>
         <a href="<?= esc_url(get_permalink()) . '?type=' . $term->slug; ?>"

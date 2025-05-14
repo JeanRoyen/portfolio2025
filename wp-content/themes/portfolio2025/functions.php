@@ -253,7 +253,6 @@ function load_svg(string $filename, string $title = '', string $alt = ''): strin
 }
 
 
-
 add_filter('manage_contact_message_posts_columns', function ($columns) {
     $columns['is_read'] = 'État de lecture';
     return $columns;
@@ -264,9 +263,9 @@ add_action('manage_contact_message_posts_custom_column', function ($column, $pos
     if ($column === 'is_read') {
         $is_read = get_post_meta($post_id, 'is_read', true);
         if ($is_read) {
-            echo '<span style="color:green;font-weight:bold;">Lu</span>';
+            echo '<span class="read">Lu</span>';
         } else {
-            echo '<span style="color:red;font-weight:bold;">Non lu</span>';
+            echo '<span class="not-read">Non lu</span>';
         }
     }
 }, 10, 2);
