@@ -6,6 +6,7 @@
     <title><?= wp_title('·', false, 'right') . get_bloginfo('name') ?></title>
     <meta name="description" content="Découvrez le portfolio de Jean Royen, développeur web junior passionné, étudiant à la HEPL de Seraing, spécialisé en sites modernes et responsives.">
     <link rel="stylesheet" type="text/css" href="<?= dw_asset('css'); ?>">
+    <link rel="canonical" href="https://portfolio.jeanroyen.be/">
     <script src="<?= dw_asset('js') ?>" defer></script>
 </head>
 <body>
