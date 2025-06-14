@@ -14,14 +14,12 @@
         <h2>Me suivre</h2>
         <?php
         $links = dw_get_navigation_links('footer'); ?>
-
         <ul>
             <?php
             foreach ($links as $link): ?>
                 <li><a class="nav__footer__items" href="<?= esc_url($link->href) ?>">
                         <?= esc_html($link->label) ?>
                     </a></li>
-
             <?php endforeach; ?>
         </ul>
     </nav>
