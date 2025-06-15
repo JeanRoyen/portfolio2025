@@ -27,3 +27,6 @@ Site vitrine réalisé pour présenter mon parcours, mes projets et mes compéte
 📌 Ce portfolio m’a permis de mettre en pratique mes compétences front-end et de mieux structurer mon SCSS.  
 Il me sert aussi de vitrine professionnelle.
 
+Liens vers le Figma : https://www.figma.com/design/54OKy8V6Vrrqgx8ZKqk1DX/Portfolio25?node-id=5-20&t=yThi3Qv7mYcVYu8M-1
+
+
